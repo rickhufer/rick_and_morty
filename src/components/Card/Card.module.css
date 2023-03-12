@@ -1,0 +1,51 @@
+.card {
+  border: 7px solid rgb(83, 83, 83);
+  border-radius: 18px;
+  padding: 10px;
+  background-color: rgb(199, 163, 41);
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 5px rgb(63, 63, 63) solid;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.button {
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  padding: 7px;
+  background-color: rgb(78, 77, 77);
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.headerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 85px;
+}
+
+.species {
+  font-weight: lighter;
+  background-color: rgba(255, 255, 255, 0.259);
+  border-radius: 5px;
+  padding: 8px 5px;
+  font-size: medium;
+}
+
+.gender {
+  font-weight: lighter;
+  background-color: rgba(255, 255, 255, 0.259);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: medium;
+}
