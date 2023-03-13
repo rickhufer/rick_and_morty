@@ -1,8 +1,8 @@
 import './App.css';
 // import characters from './data.js'
 import Cards from './components/Cards/Cards';
-import SearchBar from './components/SearchBar/SearchBar';
 import { useState } from 'react';
+import Nav from './components/Nav/Nav';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar onSearch={onSearch} />
+      <Nav onSearch={onSearch} />
       <Cards characters={characters} onClose={onClose} />
     </div>
   );
