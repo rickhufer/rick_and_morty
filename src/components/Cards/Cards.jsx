@@ -1,18 +1,19 @@
 import Card from "../Card/Card";
 import styles from './Cards.module.css'
 
-function Cards(props) {
+function Cards({ characters, onClose }) {
   return (
     <div className={styles.containerCards}>
-      {props.characters.map((character) => {
+      {characters.map(({ id, name, species, gender, image }) => {
         return (
           <Card
-            key={character.id}
-            name={character.name}
-            species={character.species}
-            gender={character.gender}
-            image={character.image}
-            onClose={() => window.alert('Emulamos que se cierra la card')}
+            key={id}
+            id={id}
+            name={name}
+            species={species}
+            gender={gender}
+            image={image}
+            onClose={onClose}
           />
         );
       })}

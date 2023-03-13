@@ -26,10 +26,16 @@ function App() {
       });
   }
 
+  const onClose = (id) => {
+    setCharacters(characters.filter(
+      (elem) => elem.id !== id
+    ))
+  }
+
   return (
     <div className="App">
       <SearchBar onSearch={onSearch} />
-      <Cards characters={characters} />
+      <Cards characters={characters} onClose={onClose} />
     </div>
   );
 }
