@@ -40,3 +40,15 @@
   color: rgb(29, 28, 28);
   cursor: pointer;
 }
+
+.button3 {
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.4rem;
+  border: none;
+  margin: 10px;
+  background-color: rgb(249, 59, 59);
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(29, 28, 28);
+  cursor: pointer;
+}

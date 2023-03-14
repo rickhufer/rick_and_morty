@@ -7,9 +7,17 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
+import Form from './components/Form/Form';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+
+  const navigate = useNavigate();
+  const [access, setAccess] = useState(false);
+  const username = 'ejemplo@gmail.com';
+  const password = '1password';
 
   const onSearch = (id) => {
     const URL_BASE = "https://be-a-rym.up.railway.app/api";
@@ -36,14 +44,27 @@ function App() {
     ))
   }
 
+  const login = (userData) => {
+    if (userData.password === password && userData.username === username) {
+      setAccess(true);
+      navigate('/home');
+    }
+  }
+  const logout = () => {
+    setAccess(false);
+    navigate('/');
+  }
+
+  useEffect(() => {
+    !access && navigate('/');
+  }, [access]);
+
   return (
     <div className="App">
-      <Nav onSearch={onSearch} />
+      <Nav onSearch={onSearch} logout={logout} />
       <Routes>
-        <Route
-          path="/home"
-          element={<Cards characters={characters} onClose={onClose} />}
-        />
+        <Route path='/' element={<Form login={login} />} />
+        <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:detailId" element={<Detail />} />
       </Routes>
