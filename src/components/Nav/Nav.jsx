@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 export default function Nav({ onSearch }) {
   return (
     <nav className={styles.nav}>
-      <h3>HOME</h3>
-      <h3>ABOUT</h3>
       <SearchBar onSearch={onSearch} />
+      <div className={styles.contLinks}>
+        <Link className={styles.link} to="/home">HOME</Link>
+        <Link className={styles.link} to="/about">ABOUT</Link>
+      </div>
     </nav>
   );
 }

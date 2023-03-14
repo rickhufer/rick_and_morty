@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="App">
       <Nav onSearch={onSearch} />
       <Routes>
         <Route

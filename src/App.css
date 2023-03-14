@@ -15,3 +15,9 @@ body {
   /* background-image: url("https://img.freepik.com/foto-gratis/hermosas-estrellas-brillantes-cielo-nocturno_181624-622.jpg"); */
   background-size: cover;
 }
+
+.App {
+  max-width: 992px;
+  width: 95%;
+  margin: 30px auto;
+}

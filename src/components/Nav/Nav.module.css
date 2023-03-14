@@ -1,4 +1,21 @@
 .nav {
-  padding: 8px;
   background-color: rgb(33, 71, 71);
+}
+
+.contLinks {
+  display: flex;
+  margin: auto 5px;
+  padding: 20px 0;
+}
+
+.link {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: rgb(33, 71, 71);
+  background-color: rgb(226, 211, 193);
+  border-radius: 5px;
 }
