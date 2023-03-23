@@ -63,9 +63,9 @@ function App() {
     <div className="App">
       <Nav onSearch={onSearch} logout={logout} />
       <Routes>
-        {/* <Route path='/' element={<Form login={login} />} /> */}
+        <Route path='/' element={<Form login={login} />} />
         {/* Aquí es /home */}
-        <Route path="/" element={<Cards characters={characters} onClose={onClose} />} />
+        <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:detailId" element={<Detail />} />
       </Routes>
