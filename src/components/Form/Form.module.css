@@ -1,3 +1,11 @@
+.formContainer {
+  max-width: 992px;
+  width: 95%;
+  margin: 30px auto;
+  color: white;
+}
+
+
 .group {
   padding-bottom: 15px;
 }
@@ -10,14 +18,14 @@
   padding: 0.6rem;
   border-radius: 0.4rem;
   border: none;
-  font-size: medium;
+  font-size: 1.8rem;
 }
 
 .errors {
   padding: 0.6rem;
   border-radius: 0.4rem;
   border: 2px solid red;
-  font-size: medium;
+  font-size: 1.8rem;
 }
 
 .success:focus {
@@ -33,12 +41,12 @@
 }
 
 .button {
-  padding: 0.6rem 0.9rem;
+  padding: 10px;
   border-radius: 0.4rem;
   border: none;
   margin: 20px auto;
   background-color: rgb(199, 163, 41);
-  font-size: 1rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: rgb(29, 28, 28);
   cursor: pointer;

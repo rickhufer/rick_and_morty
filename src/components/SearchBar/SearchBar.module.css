@@ -1,54 +1,50 @@
-.search {
-  /* margin: auto; */
-  text-align: center;
+.button {
+  background-color: #f19435;
+  cursor: pointer;
+  border: none;
+  padding: 7px;
+  border-radius: 10px;
+  border: 4px solid black;
+  border-radius: 5px;
+  color: black;
 }
 
-.input {
-  padding: 0.6rem;
-  border-radius: 0.4rem;
+.button2 {
+  background-color: #7a644d;
+  cursor: pointer;
   border: none;
-  margin: 10px;
-  font-size: medium;
+  padding: 12px;
+  border-radius: 10px;
+  border: 4px solid black;
+  border-radius: 5px;
+  color: black;
+}
+
+.button:hover {
+  color: rgb(76, 75, 75);
+  background-color: #c67422;
+}
+
+
+.input {
+  /* height: 40px; */
+  padding: 10px;
+  font-size: 1.8rem;
+  border: 4px solid black;
+  border-radius: 5px;
+  margin: 0;
+  background-color: #9fecfc;
 }
 
 .input:focus {
   /* border: #86b7fe; */
-  box-shadow: 0 0 0 0.25rem rgba(34, 205, 239, 0.593);
+  box-shadow: 0 0 0 0.3rem rgba(0, 0, 0, 0.25);
   outline: 0;
 }
 
-.button {
-  padding: 0.6rem 0.9rem;
-  border-radius: 0.4rem;
-  border: none;
-  margin: 10px;
-  background-color: rgb(199, 163, 41);
-  font-size: 1rem;
-  font-weight: bold;
-  color: rgb(29, 28, 28);
-  cursor: pointer;
-}
-
-.button2 {
-  padding: 0.6rem 0.9rem;
-  border-radius: 0.4rem;
-  border: none;
-  margin: 10px;
-  background-color: rgb(169, 166, 155);
-  font-size: 1rem;
-  font-weight: bold;
-  color: rgb(29, 28, 28);
-  cursor: pointer;
-}
-
-.button3 {
-  padding: 0.6rem 0.9rem;
-  border-radius: 0.4rem;
-  border: none;
-  margin: 10px;
-  background-color: rgb(249, 59, 59);
-  font-size: 1rem;
-  font-weight: bold;
-  color: rgb(29, 28, 28);
-  cursor: pointer;
+.search {
+  width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

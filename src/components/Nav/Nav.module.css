@@ -1,16 +1,37 @@
+.h1 {
+  font-size: 2.0rem;
+}
+
 .nav {
-  background-color: rgb(33, 71, 71);
+  background-color: #4d5463;
+  padding: 10px 0;
+}
+
+.img {
+  height: 41px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.navContainer {
+  margin: auto;
+  width: 90%;
+  height: 41px;
+  max-width: 992px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .contLinks {
   display: flex;
-  margin: auto 5px;
-  padding: 20px 0;
+  align-items: center;
+  font-size: 1.8rem;
 }
 
 .link {
   color: white;
-  padding: 10px 20px;
+  padding: 8px 18px;
   text-decoration: none;
 }
 

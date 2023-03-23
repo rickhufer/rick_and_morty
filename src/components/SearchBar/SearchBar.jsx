@@ -1,21 +1,28 @@
-import { useState } from 'react';
-import styles from './SearchBar.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import styles from "./SearchBar.module.css"
+import { useState } from 'react'
 
-function SearchBar({ onSearch, logout }) {
-  const [id, setId] = useState("");
 
-  const inputText = (event) => {
-    setId(event.target.value);
+const SearchBar = ({ onSearch, logout }) => {
+
+  const [inputId, setInputId] = useState("");
+
+  const handleInput = (event) => {
+    setInputId(event.target.value);
   }
 
   return (
     <div className={styles.search}>
-      <input className={styles.input} type="text" onChange={inputText} />
-      <button className={styles.button} onClick={() => { onSearch(id) }}>Agregar</button>
-      <button className={styles.button2} onClick={() => { onSearch(Math.floor(Math.random() * 826)) }}>Aleatorio</button>
-      <button className={styles.button3} onClick={() => { logout() }}>Logout</button>
+      <input onChange={handleInput} className={styles.input} type="text" />
+      <button onClick={() => onSearch(inputId)} className={styles.button} type='submit'>
+        <FontAwesomeIcon className={styles.icon} icon={faMagnifyingGlass} size="2x" />
+      </button>
+      <button onClick={() => logout()} className={styles.button2} type='submit'>
+        Logout
+      </button>
     </div>
-  );
+  )
 }
 
 export default SearchBar;
