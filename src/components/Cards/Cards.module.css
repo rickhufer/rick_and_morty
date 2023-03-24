@@ -13,6 +13,12 @@
   gap: 10px;
 }
 
+.h1 {
+  margin: 20px;
+  color: white;
+  text-align: center;
+}
+
 @media screen and (max-width:768px) {
   .containerCards {
     grid-template-columns: 1fr 1fr 1fr;

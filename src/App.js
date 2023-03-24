@@ -56,7 +56,6 @@ function App() {
       characters.filter((char) =>
         char.id !== id
       )
-
     )
   }
 
@@ -65,7 +64,6 @@ function App() {
       <Nav onSearch={onSearch} logout={logout} />
       <Routes>
         <Route path='/' element={<Form login={login} />} />
-        {/* Aquí es /home */}
         <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:detailId" element={<Detail />} />
