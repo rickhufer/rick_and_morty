@@ -3,7 +3,6 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import styles from "./SearchBar.module.css"
 import { useState } from 'react'
 
-
 const SearchBar = ({ onSearch, logout }) => {
 
   const [inputId, setInputId] = useState("");

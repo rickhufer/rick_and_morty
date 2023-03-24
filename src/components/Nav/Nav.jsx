@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Nav = ({ onSearch, logout }) => {
 
-
   return (
     <nav className={styles.nav}>
       <div className={styles.navContainer}>

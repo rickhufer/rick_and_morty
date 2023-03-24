@@ -2,16 +2,18 @@ import './App.css';
 import Nav from './components/Nav/Nav';
 import Cards from './components/Cards/Cards';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCharacter, removeFavorite, removeCharacter } from "./redux/actions";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { characters } = useSelector((state) => state);
 
   // aqui cambiar a false para seguridad
   const [access, setAccess] = useState(true);
@@ -19,23 +21,10 @@ function App() {
   const password = 'password1';
 
   const onSearch = (id) => {
-    const URL = "https://be-a-rym.up.railway.app/api";
-    const KEY = "b682d44ea194.e61171acf8c72545c21e";
-
     if (characters.find((elem) => elem.id === id))
       return alert("Este personaje ya existe");
-    else {
-      axios(`${URL}/character/${id}?key=${KEY}`)
-        .then((data) => {
-          if (data.data.name) {
-            setCharacters((oldChar) => [...oldChar, data.data]);
-          } else {
-            alert('No hay personajes con ese ID');
-          }
-        })
-    }
+    else dispatch(addCharacter(id));
   }
-
   const login = (userData) => {
     if (userData.password === password && userData.username === username) {
       setAccess(true);
@@ -46,18 +35,12 @@ function App() {
     setAccess(false);
     navigate('/');
   }
-
+  const onClose = (id) => {
+    dispatch(removeCharacter(id));
+  }
   useEffect(() => {
     !access && navigate('/');
   }, [access]);
-
-  const onClose = (id) => {
-    setCharacters(
-      characters.filter((char) =>
-        char.id !== id
-      )
-    )
-  }
 
   return (
     <div className="App">
@@ -67,7 +50,7 @@ function App() {
         <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:detailId" element={<Detail />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites onClose={onClose} />} />
       </Routes>
     </div>
   );

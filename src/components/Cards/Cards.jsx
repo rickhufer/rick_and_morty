@@ -14,8 +14,7 @@ const Cards = ({ characters, onClose }) => {
             species={species}
             gender={gender}
             image={image}
-            onClose={onClose}
-          />
+            onClose={onClose} />
         )}
       </div>
     </div>
