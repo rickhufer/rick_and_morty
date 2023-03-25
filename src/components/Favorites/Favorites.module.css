@@ -26,3 +26,15 @@
     grid-template-columns: 1fr;
   }
 }
+
+.selectores {
+  max-width: 992px;
+  width: 95%;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.sel {
+  padding: 8px;
+  margin: 20px;
+}

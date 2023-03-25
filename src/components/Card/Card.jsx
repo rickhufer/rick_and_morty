@@ -42,7 +42,7 @@ const Card = ({ id, name, species, gender, image, onClose, myFavorites, addFavor
     <div className={styles.card}>
       <Link className={styles.detailLink} to={`/detail/${id}`}>
         <div><img className={styles.cardImg} src={image} alt="" /></div>
-        <h2 className={styles.h2}>{name}</h2>
+        <h2 className={styles.h2}>{id} {name}</h2>
       </Link>
 
       <h2 className={styles.species}><b>Species:</b> {species}</h2>
@@ -60,13 +60,14 @@ const Card = ({ id, name, species, gender, image, onClose, myFavorites, addFavor
 const mapStateToProps = (state) => {
   return {
     myFavorites: state.myFavorites,
+    allFavorites: state.allFavorites,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addFavorite: (character) => { dispatch(addFavorite(character)) },
-    removeFavorite: (id) => { dispatch(removeFavorite(id)) }
+    removeFavorite: (id) => { dispatch(removeFavorite(id)) },
   }
 }
 
