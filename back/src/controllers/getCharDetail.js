@@ -1,18 +1,18 @@
 const axios = require("axios");
 const { URL, KEY } = process.env;
 
-const getCharDetail = (res, ID) => {
+const getCharDetail = (req, res) => {
+  const { id } = req.params;
+
   axios
-    // fetch(`${URL}/character/${detailId}?key=${KEY}`)
-    .get(`${URL}/character/${ID}?key=${KEY}`)
-    .then((response) => {
-      const { image, name, gender, status, origin, species } = response.data;
-      res.writeHead(200, { "Content-Type": "application/json" })
-      res.end(JSON.stringify({ image, name, gender, status, origin, species }))
-    })
-    .catch((error) => {
-      res.writeHead(500, { "Content-Type": "text/plain" })
-      res.end(error.message)
-    });
+    .get(`${URL}/character/${id}?key=${KEY}`)
+    .then((data) => {
+      const { id, name, species, image, gender, origin } = data.data;
+      res.status(200).json({ id, name, species, image, gender, origin });
+    }).catch((error) => {
+      res.status(500).json({ error: error.message })
+    }
+    )
+
 }
 module.exports = getCharDetail;

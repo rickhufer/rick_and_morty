@@ -1,24 +1,16 @@
 require("dotenv").config();
-const http = require("http");
 const PORT = process.env.PORT || 3001;
-const getCharById = require("./controllers/getCharById");
-const getCharDetail = require("./controllers/getCharDetail");
+const router = require("./routes/index")
 
-http
-  .createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    const { url } = req;
-    if (url.includes("onsearch")) {
-      console.log(url);
-      const id = url.split("/").at(-1);
-      getCharById(res, id);
-    }
-    if (url.includes("detail")) {
-      const id = url.split("/").at(-1);
-      getCharDetail(res, id);
-    }
+const express = require("express");
+const { json } = require("express");
+const server = express();
+server.use(json());
+server.use("/", router);
 
-  }).listen(PORT, "localhost");
+server.listen(PORT, () => {
+  console.log(`Server raised in port ${PORT}`);
+})
 
 
 
@@ -27,7 +19,21 @@ http
 
 
 
+// const getCharById = require("./controllers/getCharById");
+// const getCharDetail = require("./controllers/getCharDetail");
 
+// http
+//   .createServer((req, res) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     const { url } = req;
+//     if (url.includes("onsearch")) {
+//       console.log(url);
+//       const id = url.split("/").at(-1);
+//       getCharById(res, id);
+//     }
+//     if (url.includes("detail")) {
+//       const id = url.split("/").at(-1);
+//       getCharDetail(res, id);
+//     }
 
-
-
+//   }).listen(PORT, "localhost");
