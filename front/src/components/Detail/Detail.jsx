@@ -10,10 +10,12 @@ const Detail = () => {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    const URL = "https://be-a-rym.up.railway.app/api";
-    const KEY = "b682d44ea194.e61171acf8c72545c21e";
+    // const URL = "https://be-a-rym.up.railway.app/api";
+    // const KEY = "b682d44ea194.e61171acf8c72545c21e";
+    const URL = "http://localhost:3001/rickandmorty/detail";
 
-    fetch(`${URL}/character/${detailId}?key=${KEY}`)
+    // fetch(`${URL}/character/${detailId}?key=${KEY}`)
+    fetch(`${URL}/${detailId}`)
       .then((response) => response.json())
       .then((char) => {
         if (char.name) {
