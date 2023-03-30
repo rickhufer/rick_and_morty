@@ -4,12 +4,25 @@ import { faCircleXmark, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { addFavorite, removeFavorite } from "../../redux/actions";
+import { addFavorite, removeFavorite, getFavorites } from "../../redux/actions";
 import React from "react";
+import axios from "axios"
 
-const Card = ({ id, name, species, gender, image, onClose, myFavorites, addFavorite, removeFavorite }) => {
+const Card = ({ id, name, species, gender, image, onClose, allCharacters, addFavorite, removeFavorite }) => {
 
   const [isFav, setIsFav] = useState(false);
+
+  // const addFavorite = (character) => {
+  //   axios
+  //     .post("http://localhost:3001/rickandmorty/fav", character)
+  //     .then((res) => console.log("ok"))
+  // }
+  // const removeFavorites = (id) => {
+  //   axios
+  //     .delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+  //   dispatch(getFavorites());
+  //   alert("Eliminado con exito");
+  // }
 
   const handleFavorite = () => {
     if (isFav) {
@@ -23,20 +36,17 @@ const Card = ({ id, name, species, gender, image, onClose, myFavorites, addFavor
         species,
         gender,
         image,
-        onClose,
-        addFavorite,
-        removeFavorite,
       });
     }
   };
 
   useEffect(() => {
-    myFavorites.forEach((fav) => {
+    allCharacters.forEach((fav) => {
       if (fav.id === id) {
         setIsFav(true);
       }
     });
-  }, [myFavorites]);
+  }, [allCharacters]);
 
   return (
     <div className={styles.card}>
@@ -59,8 +69,8 @@ const Card = ({ id, name, species, gender, image, onClose, myFavorites, addFavor
 
 const mapStateToProps = (state) => {
   return {
+    allCharacters: state.allCharacters,
     myFavorites: state.myFavorites,
-    allFavorites: state.allFavorites,
   }
 }
 

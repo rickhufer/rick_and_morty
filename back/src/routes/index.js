@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const getCharById = require("../controllers/getCharById");
 const getCharDetail = require("../controllers/getCharDetail");
-const favs = require("../utils/favs")
+let favs = require("../utils/favs")
 
 const router = Router();
 

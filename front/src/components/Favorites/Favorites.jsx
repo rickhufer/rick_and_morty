@@ -1,43 +1,35 @@
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import styles from "./Favorites.module.css"
 import Card from "../Card/Card";
 import { orderCards, filterCards } from "../../redux/actions";
-import { useEffect, useState } from "react";
 
-const Favorites = ({ myFavorites, allFavorites, characters, orderCards, filterCards }) => {
-
-  const [order, setOrder] = useState("Ascendente");
-  const [filter, setFilter] = useState("Male");
+const Favorites = ({ myFavorites }) => {
+  const dispatch = useDispatch();
 
   const handleOrdenamiento = (event) => {
     let value = event.target.value;
-    // console.log(value);
-    orderCards(value);
-    // setOrder(value);
+    dispatch(orderCards(value));
   }
   const handleFiltrado = (event) => {
     let value = event.target.value;
-    // console.log(value);
-    filterCards(value);
+    dispatch(filterCards(value));
   }
-  useEffect(() => {
-    orderCards("Ascendente");
-    filterCards("Male");
-  }, [])
 
   return (
     <div>
       <h1 className={styles.h1}>Mis Favoritos</h1>
       <div className={styles.selectores}>
         <select className={styles.sel} name="ordenamiento" onChange={handleOrdenamiento} >
+          <option value="all">Elija el orden...</option>
           <option value="Ascendente">Ascendente</option>
           <option value="Descendente">Descendente</option>
         </select>
         <select className={styles.sel} name="filtrado" onChange={handleFiltrado}>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Genderless">Genderless</option>
-          <option value="unknown">Unknown</option>
+          <option value="all">Filter: Todos mis favoritos</option>
+          <option value="Male">Filter: Male</option>
+          <option value="Female">Filter: Female</option>
+          <option value="Genderless">Filter: Genderless</option>
+          <option value="unknown">Filter: Unknown</option>
         </select>
       </div>
       <div className={styles.favContainer}>
@@ -62,11 +54,5 @@ const mapStateToProps = (state) => {
     allFavorites: state.allFavorites,
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    filterCards: (gender) => { dispatch(filterCards(gender)) },
-    orderCards: (select) => { dispatch(orderCards(select)) }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+export default connect(mapStateToProps, null)(Favorites);

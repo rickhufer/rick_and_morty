@@ -8,12 +8,14 @@ import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCharacter, removeFavorite, removeCharacter } from "./redux/actions";
+import axios from 'axios';
+// import { addCharacter, removeFavorite, removeCharacter } from "./redux/actions";
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
-  const { characters } = useSelector((state) => state);
+  // const { characters } = useSelector((state) => state);
 
   // aqui cambiar a false para seguridad
   const [access, setAccess] = useState(true);
@@ -21,9 +23,21 @@ function App() {
   const password = 'password1';
 
   const onSearch = (id) => {
+    const URL = "https://be-a-rym.up.railway.app/api";
+    const KEY = "b682d44ea194.e61171acf8c72545c21e";
+
     if (characters.find((elem) => elem.id === id))
       return alert("Este personaje ya existe");
-    else dispatch(addCharacter(id));
+    else {
+      axios.get(`${URL}/character/${id}?key=${KEY}`)
+        .then((data) => {
+          if (data.data.name) {
+            setCharacters((oldChar) => [...oldChar, data.data]);
+          } else {
+            alert('No hay personajes con ese ID');
+          }
+        })
+    }
   }
   const login = (userData) => {
     if (userData.password === password && userData.username === username) {
@@ -35,8 +49,15 @@ function App() {
     setAccess(false);
     navigate('/');
   }
+  // const onClose = (id) => {
+  // dispatch(removeCharacter(id));
+  // }
   const onClose = (id) => {
-    dispatch(removeCharacter(id));
+    setCharacters(
+      characters.filter((char) =>
+        char.id !== id
+      )
+    )
   }
   useEffect(() => {
     !access && navigate('/');
