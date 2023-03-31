@@ -1,25 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import styles from "./Detail.module.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import styles from "./Detail.module.css";
+import axios from "axios"
 
 const Detail = () => {
-  const params = useParams();
-  const { detailId } = params;
-  const [character, setCharacter] = useState({});
+  const { detailId } = useParams();
+  const [character, setCharacter] = useState([]);
 
   useEffect(() => {
-    // const URL = "https://be-a-rym.up.railway.app/api";
-    // const KEY = "b682d44ea194.e61171acf8c72545c21e";
-    const URL = "http://localhost:3001/rickandmorty/detail";
-
-    // fetch(`${URL}/character/${detailId}?key=${KEY}`)
-    fetch(`${URL}/${detailId}`)
-      .then((response) => response.json())
+    axios.get(`http://localhost:3001/detail/${detailId}`)
       .then((char) => {
-        if (char.name) {
-          setCharacter(char);
+        if (char.data.name) {
+          setCharacter(char.data);
         } else {
           window.alert("No hay personajes con ese ID");
         }
