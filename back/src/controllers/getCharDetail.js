@@ -11,8 +11,7 @@ const getCharDetail = (req, res) => {
       res.status(200).json({ id, name, species, image, gender, origin });
     }).catch((error) => {
       res.status(500).json({ error: error.message })
-    }
-    )
+    })
 
 }
 module.exports = getCharDetail;

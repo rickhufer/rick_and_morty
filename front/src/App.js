@@ -23,13 +23,12 @@ function App() {
   const password = 'password1';
 
   const onSearch = (id) => {
-    const URL = "https://be-a-rym.up.railway.app/api";
-    const KEY = "b682d44ea194.e61171acf8c72545c21e";
+    const URL = "http://localhost:3001/rickandmorty";
 
     if (characters.find((elem) => elem.id === id))
       return alert("Este personaje ya existe");
     else {
-      axios.get(`${URL}/character/${id}?key=${KEY}`)
+      axios.get(`${URL}/onsearch/${id}`)
         .then((data) => {
           if (data.data.name) {
             setCharacters((oldChar) => [...oldChar, data.data]);

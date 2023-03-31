@@ -7,42 +7,15 @@ export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 export const GET_FAVORITES = "GET_FAVORITES";
 
-const URL = "http://localhost:3001/rickandmorty/fav";
-
 export const addFavorite = (character) => {
-  // return { type: ADD_FAVORITE, payload: character }
-
-
-  axios.post(`${URL}`, character)
-  // .then(res => console.log("Añadido"))
+  axios.post(`http://localhost:3001/rickandmorty/fav/`, character)
   return { type: ADD_FAVORITE, payload: character }
-
 }
-export const removeFavorite = (id) => { // async await
-  axios.delete(`${URL}/${id}`)
+export const removeFavorite = (id) => {                            // async await
+  axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
   return { type: REMOVE_FAVORITE, payload: id }
 }
 
-// export const addCharacter = (id) => {
-//   const URL = "http://localhost:3001/onsearch"
-//   // const URL = "https://be-a-rym.up.railway.app/api";
-//   // const KEY = "b682d44ea194.e61171acf8c72545c21e";
-
-//   return (dispatch) => {
-//     // return fetch(`${URL}/character/${id}?key=${KEY}`)
-//     return fetch(`${URL}/${id}`)
-//       .then(resp => resp.json())
-//       .then((data) => {
-//         if (data.name) dispatch({ type: ADD_CHARACTER, payload: data })
-//         else alert('No hay personajes con ese ID');
-//       }
-//       )
-//   }
-// }
-
-// export const removeCharacter = (id) => {
-//   return { type: REMOVE_CHARACTER, payload: id }
-// }
 export const filterCards = (gender) => {
   return { type: FILTER, payload: gender }
 }
