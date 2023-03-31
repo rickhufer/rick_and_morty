@@ -12,7 +12,8 @@ router.get("/rickandmorty/detail/:id", getCharDetail);
 
 // POST
 router.post("/rickandmorty/fav", (req, res) => {
-  favs.push(req.body);
+  const char = favs.find(c => favs.id == req.body.id)
+  if (!char) favs.push(req.body);
   res.status(200).json({ status: "ok" })
 })
 

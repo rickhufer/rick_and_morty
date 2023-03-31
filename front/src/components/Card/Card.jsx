@@ -4,9 +4,8 @@ import { faCircleXmark, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { addFavorite, removeFavorite, getFavorites } from "../../redux/actions";
+import { addFavorite, removeFavorite } from "../../redux/actions";
 import React from "react";
-import axios from "axios"
 
 const Card = ({ id, name, species, gender, image, onClose, allCharacters, addFavorite, removeFavorite }) => {
 
