@@ -12,18 +12,6 @@ const Card = ({ id, name, species, gender, image, onClose, allCharacters, addFav
 
   const [isFav, setIsFav] = useState(false);
 
-  // const addFavorite = (character) => {
-  //   axios
-  //     .post("http://localhost:3001/rickandmorty/fav", character)
-  //     .then((res) => console.log("ok"))
-  // }
-  // const removeFavorites = (id) => {
-  //   axios
-  //     .delete(`http://localhost:3001/rickandmorty/fav/${id}`)
-  //   dispatch(getFavorites());
-  //   alert("Eliminado con exito");
-  // }
-
   const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);
@@ -70,7 +58,6 @@ const Card = ({ id, name, species, gender, image, onClose, allCharacters, addFav
 const mapStateToProps = (state) => {
   return {
     allCharacters: state.allCharacters,
-    myFavorites: state.myFavorites,
   }
 }
 

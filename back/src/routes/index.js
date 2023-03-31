@@ -21,7 +21,7 @@ router.post("/rickandmorty/fav", (req, res) => {
 // DELETE
 router.delete("/rickandmorty/fav/:id", (req, res) => {
   const { id } = req.params;
-  favs.filter((char) => { char.id != id })
+  favs = favs.filter((char) => { char.id != id })
   res.status(200).json({ status: "ok" })
 })
 

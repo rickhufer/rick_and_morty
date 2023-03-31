@@ -7,15 +7,15 @@ import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
-// import { addCharacter, removeFavorite, removeCharacter } from "./redux/actions";
+import { removeFavorite } from "./redux/actions";
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
-  // const { characters } = useSelector((state) => state);
 
   // aqui cambiar a false para seguridad
   const [access, setAccess] = useState(true);
@@ -49,15 +49,14 @@ function App() {
     setAccess(false);
     navigate('/');
   }
-  // const onClose = (id) => {
-  // dispatch(removeCharacter(id));
-  // }
+
   const onClose = (id) => {
     setCharacters(
       characters.filter((char) =>
         char.id !== id
       )
-    )
+    );
+    dispatch(removeFavorite(id))
   }
   useEffect(() => {
     !access && navigate('/');

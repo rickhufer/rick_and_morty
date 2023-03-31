@@ -7,17 +7,19 @@ export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 export const GET_FAVORITES = "GET_FAVORITES";
 
+const URL = "http://localhost:3001/rickandmorty/fav";
+
 export const addFavorite = (character) => {
   // return { type: ADD_FAVORITE, payload: character }
 
-  // const URL = "http://localhost:3001/rickandmorty/fav";
 
-  // axios.post(`${URL}`, character)
-  //   .then(res => console.log("Añadido"))
+  axios.post(`${URL}`, character)
+  // .then(res => console.log("Añadido"))
   return { type: ADD_FAVORITE, payload: character }
 
 }
-export const removeFavorite = (id) => {
+export const removeFavorite = (id) => { // async await
+  axios.delete(`${URL}/${id}`)
   return { type: REMOVE_FAVORITE, payload: id }
 }
 
