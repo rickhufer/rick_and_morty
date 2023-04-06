@@ -9,7 +9,6 @@ const router = Router();
 router.get("/rickandmorty/onsearch/:id", getCharById);
 router.get("/rickandmorty/detail/:id", getCharDetail);
 
-
 // POST
 router.post("/rickandmorty/fav", (req, res) => {
   const char = favs.find(c => favs.id == req.body.id)
@@ -27,7 +26,5 @@ router.delete("/rickandmorty/fav/:id", (req, res) => {
   favs = favs.filter((char) => char.id != id)
   res.status(200).json({ status: "ok" })
 })
-
-
 
 module.exports = router;
