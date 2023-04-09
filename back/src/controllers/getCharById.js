@@ -6,8 +6,10 @@ const getCharById = async (req, res) => {
 
   try {
     const data = await axios.get(`${URL}/character/${id}?key=${KEY}`)
-    const { name, species, image, gender } = data.data;
-    res.status(200).json({ id, name, species, image, gender });
+    let { name, species, image, gender, status, origin } = data.data;
+    origin = origin.name;
+    console.log(origin);
+    res.status(200).json({ id, name, species, image, gender, status, origin });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

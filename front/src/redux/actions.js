@@ -26,7 +26,13 @@ export const orderCards = (id) => {
 
 export const getFavorites = () => {
   return async function (dispatch) {
-    const response = await axios.get(`http://localhost:3001/rickandmorty/fav`);
-    dispatch({ type: GET_FAVORITES, payload: response.data });
+
+    try {
+      const response = await axios.get(`http://localhost:3001/rickandmorty/fav`);
+      dispatch({ type: GET_FAVORITES, payload: response.data });
+    } catch (error) {
+
+    }
+
   };
 };

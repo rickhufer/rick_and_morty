@@ -3,8 +3,8 @@ import {
   REMOVE_FAVORITE,
   FILTER,
   ORDER,
-  ADD_CHARACTER,
-  REMOVE_CHARACTER,
+  // ADD_CHARACTER,
+  // REMOVE_CHARACTER,
   GET_FAVORITES,
 } from "./actions";
 
@@ -29,6 +29,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         myFavorites: state.myFavorites.filter((elem) => elem.id !== action.payload),
         allCharacters: allCharac.filter((elem) => elem.id !== action.payload),
+      };
+    case GET_FAVORITES:
+      return {
+        ...state,
+        myFavorites: [...action.payload],
+        allCharacters: [...action.payload],
+        // allCharacters: [...state.allCharacters, action.payload],
       };
 
     case FILTER:

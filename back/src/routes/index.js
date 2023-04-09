@@ -5,6 +5,7 @@ const login = require("../controllers/login");
 const postUser = require("../controllers/postUser");
 const postFav = require("../controllers/postFav");
 const deleteFav = require("../controllers/deleteFav");
+const getChar = require("../controllers/getChar");
 // let favs = require("../utils/favs")
 
 const router = Router();
@@ -26,11 +27,7 @@ router.post("/rickandmorty/fav", postFav
   // }
 )
 
-// router.get("/rickandmorty/fav",
-//   (req, res) => {
-//     res.status(200).json(favs);
-//   }
-// )
+router.get("/rickandmorty/fav", getChar)
 
 // DELETE
 router.delete("/rickandmorty/fav/:id", deleteFav

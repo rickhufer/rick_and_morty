@@ -1,10 +1,12 @@
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import styles from "./Favorites.module.css"
 import Card from "../Card/Card";
-import { orderCards, filterCards } from "../../redux/actions";
+import { orderCards, filterCards, getFavorites } from "../../redux/actions";
+import { useEffect } from "react";
 
-const Favorites = ({ myFavorites }) => {
+const Favorites = () => {
   const dispatch = useDispatch();
+  const myFavorites = useSelector((state) => state.myFavorites);
 
   const handleOrdenamiento = (event) => {
     let value = event.target.value;
@@ -14,6 +16,11 @@ const Favorites = ({ myFavorites }) => {
     let value = event.target.value;
     dispatch(filterCards(value));
   }
+
+  //Nuevo
+  useEffect(() => {
+    dispatch(getFavorites());
+  }, []);
 
   return (
     <div>
@@ -33,7 +40,7 @@ const Favorites = ({ myFavorites }) => {
         </select>
       </div>
       <div className={styles.favContainer}>
-        {myFavorites.map(({ id, name, species, gender, image, onClose }) =>
+        {myFavorites.map(({ id, name, species, gender, image, status, origin, onClose }) =>
           <Card
             key={id}
             id={id}
@@ -41,6 +48,8 @@ const Favorites = ({ myFavorites }) => {
             species={species}
             gender={gender}
             image={image}
+            status={status}
+            origin={origin}
             onClose={onClose} />
         )}
       </div>
@@ -48,11 +57,13 @@ const Favorites = ({ myFavorites }) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    myFavorites: state.myFavorites,
-    allFavorites: state.allFavorites,
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     myFavorites: state.myFavorites,
+//     allFavorites: state.allFavorites,
+//   }
+// }
 
-export default connect(mapStateToProps, null)(Favorites);
+// export default connect(mapStateToProps, null)(Favorites);
+
+export default Favorites;

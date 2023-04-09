@@ -32,7 +32,7 @@ const Detail = () => {
           <p><b>Status:</b> {character.status}</p>
           <p><b>Specie:</b> {character.species}</p>
           <p><b>Gender:</b> {character.gender}</p>
-          <p><b>Origin:</b> {character.origin?.name}</p>
+          <p><b>Origin:</b> {character.origin}</p>
           <img className={styles.img} src={character.image} alt={character.name} />
         </>
       ) : (

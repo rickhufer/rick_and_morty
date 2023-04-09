@@ -7,7 +7,7 @@ import { connect } from "react-redux"
 import { addFavorite, removeFavorite } from "../../redux/actions";
 import React from "react";
 
-const Card = ({ id, name, species, gender, image, onClose, allCharacters, addFavorite, removeFavorite }) => {
+const Card = ({ id, name, species, gender, image, status, origin, onClose, allCharacters, addFavorite, removeFavorite }) => {
 
   const [isFav, setIsFav] = useState(false);
 
@@ -23,6 +23,8 @@ const Card = ({ id, name, species, gender, image, onClose, allCharacters, addFav
         species,
         gender,
         image,
+        status,
+        origin,
       });
     }
   };
