@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { removeFavorite } from "./redux/actions";
 // import { getFavorites } from "./redux/actions";
-
+//Prueba
 function App() {
   const dispatch = useDispatch();
 
