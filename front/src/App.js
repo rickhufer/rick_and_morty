@@ -23,12 +23,11 @@ function App() {
   const password = 'password1';
 
   const onSearch = (id) => {
-    const URL = "http://localhost:3001/rickandmorty";
 
     if (characters.find((elem) => elem.id === id))
       return alert("Este personaje ya existe");
     else {
-      axios.get(`${URL}/onsearch/${id}`)
+      axios.get(`http://localhost:3001/rickandmorty/onsearch/${id}`)
         .then((data) => {
           if (data.data.name) {
             setCharacters((oldChar) => [...oldChar, data.data]);
@@ -59,6 +58,13 @@ function App() {
   }
   useEffect(() => {
     !access && navigate('/');
+
+    axios
+      .get(`http://localhost:3001/rickandmorty/fav`)
+      .then((data) => {
+        setCharacters(() => [...data.data]);
+      })
+
   }, [access]);
 
   return (

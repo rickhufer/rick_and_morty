@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Card from "../Card/Card";
 import { getFavorites } from "../../redux/actions";
+import axios from 'axios';
 import styles from "./Cards.module.css"
 
 const Cards = ({ characters, onClose }) => {
