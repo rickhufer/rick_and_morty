@@ -27,7 +27,7 @@ function App() {
     if (characters.find((elem) => elem.id === id))
       return alert("Este personaje ya existe");
     else {
-      axios.get(`http://localhost:3001/rickandmorty/onsearch/${id}`)
+      axios.get(`/rickandmorty/onsearch/${id}`)
         .then((data) => {
           if (data.data.name) {
             setCharacters((oldChar) => [...oldChar, data.data]);
@@ -60,7 +60,7 @@ function App() {
     !access && navigate('/');
 
     axios
-      .get(`http://localhost:3001/rickandmorty/fav`)
+      .get(`/rickandmorty/fav`)
       .then((data) => {
         setCharacters(() => [...data.data]);
       })

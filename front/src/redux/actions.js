@@ -9,11 +9,11 @@ export const GET_FAVORITES = "GET_FAVORITES";
 // export const REMOVE_CHARACTER = "REMOVE_CHARACTER";
 
 export const addFavorite = (character) => {
-  axios.post(`http://localhost:3001/rickandmorty/fav/`, character)
+  axios.post(`/rickandmorty/fav/`, character)
   return { type: ADD_FAVORITE, payload: character }
 }
 export const removeFavorite = (id) => {                            // async await
-  axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+  axios.delete(`/rickandmorty/fav/${id}`)
   return { type: REMOVE_FAVORITE, payload: id }
 }
 
@@ -28,7 +28,7 @@ export const getFavorites = () => {
   return async function (dispatch) {
 
     try {
-      const response = await axios.get(`http://localhost:3001/rickandmorty/fav`);
+      const response = await axios.get(`/rickandmorty/fav`);
       dispatch({ type: GET_FAVORITES, payload: response.data });
     } catch (error) {
 
