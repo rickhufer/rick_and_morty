@@ -10,6 +10,7 @@ import Favorites from './components/Favorites/Favorites';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { removeFavorite } from "./redux/actions";
+// import { getFavorites } from "./redux/actions";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +64,8 @@ function App() {
       .get(`/rickandmorty/fav`)
       .then((data) => {
         setCharacters(() => [...data.data]);
-      })
+      });
+    //dispatch(getFavorites());
 
   }, [access]);
 
